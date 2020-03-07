@@ -1,6 +1,5 @@
 package com.pluralsight.basicoop;
 
-import com.pluralsight.basicoop.accountstates.Active;
 import com.pluralsight.basicoop.accountstates.NotVerified;
 
 import java.math.BigDecimal;
@@ -26,6 +25,10 @@ public class Account {
         accountState = accountState.withdraw(subtractFromBalance(amount));
     }
 
+    public void verifyHolder() {
+        accountState = accountState.verifyHolder();
+    }
+
     private Runnable addToBalance(BigDecimal amount) {
         return () -> {
             balance = balance.add(amount);
@@ -38,10 +41,6 @@ public class Account {
         };
     }
 
-//    public void verifyHolder() {
-//        verified = true;
-//    }
-//
 //    public void closeAccount() {
 //        closed = true;
 //    }
