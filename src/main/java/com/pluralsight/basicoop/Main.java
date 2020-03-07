@@ -7,19 +7,29 @@ public class Main {
         final Account account1 = new Account(new AccountUnfrozen());
         System.out.println("Account just created: " + account1.getBalance());
 
-        account1.deposit(new BigDecimal("20"));
-        System.out.println("Deposited 20 with account not verified: " + account1.getBalance());
+        account1.deposit(new BigDecimal("50"));
+        System.out.println("Deposited 50 with account not verified: " + account1.getBalance());
 
-        account1.withdraw(new BigDecimal("10"));
-        System.out.println("Withdrew 10 with account not verified: " + account1.getBalance());
+        account1.withdraw(new BigDecimal("20"));
+        System.out.println("Withdrew 20 with account not verified: " + account1.getBalance());
 
         account1.verifyHolder();
         System.out.println("Account is verified!");
-        account1.withdraw(new BigDecimal("10"));
-        System.out.println("Withdrew 10 with account verified: " + account1.getBalance());
+        account1.withdraw(new BigDecimal("20"));
+        System.out.println("Withdrew 20 with account verified: " + account1.getBalance());
 
-        account1.deposit(new BigDecimal("20"));
-        System.out.println("Deposited 20 with account verified: " + account1.getBalance());
+        account1.deposit(new BigDecimal("70"));
+        System.out.println("Deposited 70 with account verified: " + account1.getBalance());
+
+        account1.freezeAccount();
+        System.out.println("Account is frozen!");
+        account1.withdraw(new BigDecimal("30"));
+        System.out.println("Withdrew 30 with account frozen then unfrozen: " + account1.getBalance());
+
+        account1.freezeAccount();
+        System.out.println("Account is frozen!");
+        account1.deposit(new BigDecimal("10"));
+        System.out.println("Deposited 10 with account frozen then unfrozen: " + account1.getBalance());
 
         account1.closeAccount();
         System.out.println("Account is closed!");

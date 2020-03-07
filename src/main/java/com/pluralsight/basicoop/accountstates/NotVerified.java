@@ -26,6 +26,6 @@ public class NotVerified implements AccountState {
 
     @Override
     public AccountState freezeAccount() {
-        return new Frozen();
+        return this;
     }
 }

@@ -1,6 +1,7 @@
 package com.pluralsight.basicoop.accountstates;
 
 import com.pluralsight.basicoop.AccountState;
+import com.pluralsight.basicoop.AccountUnfrozen;
 
 public class Active implements AccountState {
     @Override
@@ -27,6 +28,6 @@ public class Active implements AccountState {
 
     @Override
     public AccountState freezeAccount() {
-        return this;
+        return new Frozen(new AccountUnfrozen());
     }
 }

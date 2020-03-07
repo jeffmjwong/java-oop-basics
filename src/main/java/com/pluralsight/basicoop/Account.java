@@ -34,7 +34,7 @@ public class Account {
     }
 
     public void freezeAccount() {
-
+        accountState = accountState.freezeAccount();
     }
 
     private Runnable addToBalance(BigDecimal amount) {
