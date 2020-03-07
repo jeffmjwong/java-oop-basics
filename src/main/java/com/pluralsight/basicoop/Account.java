@@ -49,11 +49,7 @@ public class Account {
             return;
         }
 
-        if (frozen) {
-            frozen = false;
-            onUnfrozen.handle();
-        }
-
+        ensureUnfrozen();
         balance = balance.add(amount);
     }
 
@@ -62,11 +58,14 @@ public class Account {
             return;
         }
 
+        ensureUnfrozen();
+        balance = balance.subtract(amount);
+    }
+
+    private void ensureUnfrozen() {
         if (frozen) {
             frozen = false;
             onUnfrozen.handle();
         }
-
-        balance = balance.subtract(amount);
     }
 }
