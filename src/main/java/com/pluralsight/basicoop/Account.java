@@ -29,6 +29,14 @@ public class Account {
         accountState = accountState.verifyHolder();
     }
 
+    public void closeAccount() {
+        accountState = accountState.closeAccount();
+    }
+
+    public void freezeAccount() {
+
+    }
+
     private Runnable addToBalance(BigDecimal amount) {
         return () -> {
             balance = balance.add(amount);
@@ -40,16 +48,4 @@ public class Account {
             balance = balance.subtract(amount);
         };
     }
-
-//    public void closeAccount() {
-//        closed = true;
-//    }
-//
-//    public void freezeAccount() {
-//        if (!verified || closed) {
-//            return;
-//        }
-//
-//        freezable = freezable.freezeAccount();
-//    }
 }

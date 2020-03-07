@@ -22,7 +22,7 @@ public class Active implements AccountState {
 
     @Override
     public AccountState closeAccount() {
-        return this;
+        return new Closed();
     }
 
     @Override

@@ -14,10 +14,19 @@ public class Main {
         System.out.println("Withdrew 10 with account not verified: " + account1.getBalance());
 
         account1.verifyHolder();
+        System.out.println("Account is verified!");
         account1.withdraw(new BigDecimal("10"));
         System.out.println("Withdrew 10 with account verified: " + account1.getBalance());
 
         account1.deposit(new BigDecimal("20"));
         System.out.println("Deposited 20 with account verified: " + account1.getBalance());
+
+        account1.closeAccount();
+        System.out.println("Account is closed!");
+        account1.withdraw(new BigDecimal("30"));
+        System.out.println("Withdrew 30 with account closed: " + account1.getBalance());
+
+        account1.deposit(new BigDecimal("30"));
+        System.out.println("Deposited 30 with account closed: " + account1.getBalance());
     }
 }
