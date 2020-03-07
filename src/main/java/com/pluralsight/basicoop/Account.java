@@ -6,9 +6,13 @@ public class Account {
     private BigDecimal balance;
     private boolean verified;
     private boolean closed;
+    private boolean frozen;
 
-    public Account() {
+    private AccountUnfrozen onUnfrozen;
+
+    public Account(AccountUnfrozen onUnfrozen) {
         balance = BigDecimal.ZERO;
+        this.onUnfrozen = onUnfrozen;
     }
 
     public BigDecimal getBalance() {
@@ -20,6 +24,9 @@ public class Account {
     public boolean isClosed() {
         return closed;
     }
+    public boolean isFrozen() {
+        return frozen;
+    }
 
     public void verifyHolder() {
         verified = true;
@@ -29,9 +36,22 @@ public class Account {
         closed = true;
     }
 
+    public void freezeAccount() {
+        if (!verified || closed) {
+            return;
+        }
+
+        frozen = true;
+    }
+
     public void deposit(BigDecimal amount) {
         if (closed) {
             return;
+        }
+
+        if (frozen) {
+            frozen = false;
+            onUnfrozen.handle();
         }
 
         balance = balance.add(amount);
