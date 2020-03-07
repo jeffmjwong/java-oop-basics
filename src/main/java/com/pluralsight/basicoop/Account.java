@@ -1,60 +1,45 @@
 package com.pluralsight.basicoop;
 
+import com.pluralsight.basicoop.accountstates.Active;
+import com.pluralsight.basicoop.accountstates.NotVerified;
+
 import java.math.BigDecimal;
 
 public class Account {
     private BigDecimal balance;
-    private boolean verified;
-    private boolean closed;
-
-    private Freezable freezable;
+    private AccountState accountState;
 
     public Account(AccountUnfrozen onUnfrozen) {
         balance = BigDecimal.ZERO;
-        freezable = new FreezableActive();
+        accountState = new NotVerified();
     }
 
     public BigDecimal getBalance() {
         return balance;
     }
-    public boolean isVerified() {
-        return verified;
-    }
-    public boolean isClosed() {
-        return closed;
-    }
-
-    public void verifyHolder() {
-        verified = true;
-    }
-
-    public void closeAccount() {
-        closed = true;
-    }
-
-    public void freezeAccount() {
-        if (!verified || closed) {
-            return;
-        }
-
-        freezable = freezable.freezeAccount();
-    }
 
     public void deposit(BigDecimal amount) {
-        if (closed) {
-            return;
-        }
-
-        freezable = freezable.deposit();
-        balance = balance.add(amount);
+        accountState = accountState.deposit(amount, a -> balance = balance.add(a));
     }
 
     public void withdraw(BigDecimal amount) {
-        if (!verified || closed) {
-            return;
-        }
-
-        freezable = freezable.withdraw();
+        accountState = accountState.withdraw();
         balance = balance.subtract(amount);
     }
+
+//    public void verifyHolder() {
+//        verified = true;
+//    }
+//
+//    public void closeAccount() {
+//        closed = true;
+//    }
+//
+//    public void freezeAccount() {
+//        if (!verified || closed) {
+//            return;
+//        }
+//
+//        freezable = freezable.freezeAccount();
+//    }
 }
