@@ -3,18 +3,32 @@ package com.pluralsight.basicoop;
 import java.math.BigDecimal;
 
 public class Account {
-    private boolean isVerified;
+    private boolean verified;
+    private boolean closed;
 
-    public void holderVerified() {
-        isVerified = true;
+    public boolean isVerified() {
+        return verified;
+    }
+    public boolean isClosed() {
+        return closed;
+    }
+
+    public void verifyHolder() {
+        verified = true;
+    }
+
+    public void closeAccount() {
+        closed = true;
     }
 
     public void deposit(BigDecimal amount) {
-
+        if (closed) {
+            return;
+        }
     }
 
     public void withdraw(BigDecimal amount) {
-        if (!isVerified) {
+        if (!verified || closed) {
             return;
         }
     }
