@@ -3,9 +3,17 @@ package com.pluralsight.basicoop;
 import java.math.BigDecimal;
 
 public class Account {
+    private BigDecimal balance;
     private boolean verified;
     private boolean closed;
 
+    public Account() {
+        balance = BigDecimal.ZERO;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
     public boolean isVerified() {
         return verified;
     }
