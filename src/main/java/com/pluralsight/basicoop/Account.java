@@ -9,6 +9,7 @@ public class Account {
 
     private AccountUnfrozen onUnfrozen;
     private EnsureUnfrozen ensureUnfrozen;
+    private Freezable freezable;
 
     public Account(AccountUnfrozen onUnfrozen) {
         balance = BigDecimal.ZERO;
