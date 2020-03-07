@@ -1,6 +1,5 @@
 package com.pluralsight.basicoop.accountstates;
 
-import com.pluralsight.basicoop.AccountState;
 import com.pluralsight.basicoop.AccountUnfrozen;
 
 public class Frozen implements AccountState {

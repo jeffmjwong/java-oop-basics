@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class Main {
     public static void main(String[] args) {
-        final Account account1 = new Account(new AccountUnfrozen());
+        final Account account1 = new Account();
         System.out.println("Account just created: " + account1.getBalance());
 
         account1.deposit(new BigDecimal("50"));

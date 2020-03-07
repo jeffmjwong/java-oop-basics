@@ -1,7 +1,5 @@
 package com.pluralsight.basicoop.accountstates;
 
-import com.pluralsight.basicoop.AccountState;
-
 public class Closed implements AccountState {
     @Override
     public AccountState deposit(Runnable addToBalance) {

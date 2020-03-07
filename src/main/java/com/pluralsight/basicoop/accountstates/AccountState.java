@@ -1,4 +1,4 @@
-package com.pluralsight.basicoop;
+package com.pluralsight.basicoop.accountstates;
 
 public interface AccountState {
     AccountState deposit(Runnable addToBalance);

@@ -1,5 +1,6 @@
 package com.pluralsight.basicoop;
 
+import com.pluralsight.basicoop.accountstates.AccountState;
 import com.pluralsight.basicoop.accountstates.NotVerified;
 
 import java.math.BigDecimal;
@@ -8,7 +9,7 @@ public class Account {
     private BigDecimal balance;
     private AccountState accountState;
 
-    public Account(AccountUnfrozen onUnfrozen) {
+    public Account() {
         balance = BigDecimal.ZERO;
         accountState = new NotVerified();
     }
