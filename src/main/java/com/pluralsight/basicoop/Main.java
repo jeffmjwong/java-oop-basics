@@ -19,7 +19,7 @@ public class Main {
         System.out.println("4 " + account1.getBalance());
 
         account1.freezeAccount();
-        account1.withdraw(new BigDecimal("35"));
+        account1.withdraw(new BigDecimal("20"));
         System.out.println("5 " + account1.getBalance());
     }
 }
