@@ -2,17 +2,16 @@ package com.pluralsight.basicoop.accountstates;
 
 import com.pluralsight.basicoop.AccountState;
 
-import java.math.BigDecimal;
-import java.util.function.Consumer;
-
 public class Frozen implements AccountState {
     @Override
-    public AccountState deposit(BigDecimal amount, Consumer<BigDecimal> addToBalance) {
+    public AccountState deposit(Runnable addToBalance) {
+        addToBalance.run();
         return this;
     }
 
     @Override
-    public AccountState withdraw() {
+    public AccountState withdraw(Runnable subtractFromBalance) {
+        subtractFromBalance.run();
         return this;
     }
 

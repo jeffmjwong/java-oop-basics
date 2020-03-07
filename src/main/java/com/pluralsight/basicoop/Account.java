@@ -19,12 +19,23 @@ public class Account {
     }
 
     public void deposit(BigDecimal amount) {
-        accountState = accountState.deposit(amount, a -> balance = balance.add(a));
+        accountState = accountState.deposit(addToBalance(amount));
     }
 
     public void withdraw(BigDecimal amount) {
-        accountState = accountState.withdraw();
-        balance = balance.subtract(amount);
+        accountState = accountState.withdraw(subtractFromBalance(amount));
+    }
+
+    private Runnable addToBalance(BigDecimal amount) {
+        return () -> {
+            balance = balance.add(amount);
+        };
+    }
+
+    private Runnable subtractFromBalance(BigDecimal amount) {
+        return () -> {
+            balance = balance.subtract(amount);
+        };
     }
 
 //    public void verifyHolder() {
