@@ -33,6 +33,7 @@ public class Account {
         if (closed) {
             return;
         }
+
         balance = balance.add(amount);
     }
 
@@ -40,5 +41,7 @@ public class Account {
         if (!verified || closed) {
             return;
         }
+
+        balance = balance.subtract(amount);
     }
 }

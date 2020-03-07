@@ -10,8 +10,8 @@ public class Main {
         account1.deposit(new BigDecimal("20"));
         System.out.println(account1.getBalance());
 
-        account1.closeAccount();
-        account1.deposit(new BigDecimal("30"));
+        account1.verifyHolder();
+        account1.withdraw(new BigDecimal("20"));
         System.out.println(account1.getBalance());
     }
 }
