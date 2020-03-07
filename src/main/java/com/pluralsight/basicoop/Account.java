@@ -6,13 +6,14 @@ public class Account {
     private BigDecimal balance;
     private boolean verified;
     private boolean closed;
-    private boolean frozen;
 
     private AccountUnfrozen onUnfrozen;
+    private EnsureUnfrozen ensureUnfrozen;
 
     public Account(AccountUnfrozen onUnfrozen) {
         balance = BigDecimal.ZERO;
         this.onUnfrozen = onUnfrozen;
+        this.ensureUnfrozen = this::stayUnfrozen;
     }
 
     public BigDecimal getBalance() {
@@ -23,9 +24,6 @@ public class Account {
     }
     public boolean isClosed() {
         return closed;
-    }
-    public boolean isFrozen() {
-        return frozen;
     }
 
     public void verifyHolder() {
@@ -41,7 +39,7 @@ public class Account {
             return;
         }
 
-        frozen = true;
+        this.ensureUnfrozen = this::unfreeze;
     }
 
     public void deposit(BigDecimal amount) {
@@ -49,7 +47,7 @@ public class Account {
             return;
         }
 
-        ensureUnfrozen();
+        ensureUnfrozen.execute();
         balance = balance.add(amount);
     }
 
@@ -58,24 +56,16 @@ public class Account {
             return;
         }
 
-        ensureUnfrozen();
+        ensureUnfrozen.execute();
         balance = balance.subtract(amount);
     }
 
-    private void ensureUnfrozen() {
-        if (frozen) {
-            unfreeze();
-        } else {
-            stayUnfrozen();
-        }
-    }
-
     private void unfreeze() {
-        frozen = false;
         onUnfrozen.handle();
+        this.ensureUnfrozen = this::stayUnfrozen;
     }
 
     private void stayUnfrozen() {
-        System.out.println("Account is unfrozen and active!");
+        System.out.println("Account is still active!");
     }
 }

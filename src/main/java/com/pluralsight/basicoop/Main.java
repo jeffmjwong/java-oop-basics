@@ -12,17 +12,14 @@ public class Main {
         System.out.println("2 " + account1.getBalance());
 
         account1.freezeAccount();
-        System.out.println("3 " + account1.isFrozen());
+        account1.deposit(new BigDecimal("30"));
+        System.out.println("3 " + account1.getBalance());
 
         account1.deposit(new BigDecimal("30"));
         System.out.println("4 " + account1.getBalance());
-        System.out.println("5 " + account1.isFrozen());
 
         account1.freezeAccount();
-        System.out.println("6 " + account1.isFrozen());
-
         account1.withdraw(new BigDecimal("35"));
-        System.out.println("7 " + account1.getBalance());
-        System.out.println("8 " + account1.isFrozen());
+        System.out.println("5 " + account1.getBalance());
     }
 }
