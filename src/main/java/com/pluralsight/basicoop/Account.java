@@ -62,6 +62,11 @@ public class Account {
             return;
         }
 
+        if (frozen) {
+            frozen = false;
+            onUnfrozen.handle();
+        }
+
         balance = balance.subtract(amount);
     }
 }
