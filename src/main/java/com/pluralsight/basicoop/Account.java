@@ -64,8 +64,18 @@ public class Account {
 
     private void ensureUnfrozen() {
         if (frozen) {
-            frozen = false;
-            onUnfrozen.handle();
+            unfreeze();
+        } else {
+            stayUnfrozen();
         }
+    }
+
+    private void unfreeze() {
+        frozen = false;
+        onUnfrozen.handle();
+    }
+
+    private void stayUnfrozen() {
+        System.out.println("Account is unfrozen and active!");
     }
 }
