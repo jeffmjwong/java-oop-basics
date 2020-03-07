@@ -33,6 +33,7 @@ public class Account {
         if (closed) {
             return;
         }
+        balance = balance.add(amount);
     }
 
     public void withdraw(BigDecimal amount) {
