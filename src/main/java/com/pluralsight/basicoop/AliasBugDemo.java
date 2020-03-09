@@ -19,9 +19,9 @@ public class AliasBugDemo {
         if (!hasEnoughMoney && hasEnoughMoneyFinal) {
             System.out.println("Only this time, you will pay " + finalCost + " with your " + wallet);
         } else if (hasEnoughMoney) {
-            System.out.println("You will pay " + cost + " with your " + wallet);
+            System.out.println("You will pay " + finalCost + " with your " + wallet);
         } else {
-            System.out.println("You cannot pay " + cost + " with your " + wallet);
+            System.out.println("You cannot pay " + finalCost + " with your " + wallet);
         }
     }
 
@@ -33,9 +33,15 @@ public class AliasBugDemo {
 
         buy(usd30, usd20);
         System.out.println();
+
         buy(usd20, usd30);
         System.out.println();
+
         isHappyHour = true;
         buy(usd20, usd30);
+        System.out.println();
+
+        isHappyHour = true;
+        buy(usd30, usd10);
     }
 }
