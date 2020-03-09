@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class Main {
     public static void main(String[] args) {
-        useAccountClass();
+//        useAccountClass();
     }
 
     private static void useAccountClass() {
