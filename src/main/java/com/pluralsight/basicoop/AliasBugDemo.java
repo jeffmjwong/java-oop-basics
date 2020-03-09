@@ -3,6 +3,8 @@ package com.pluralsight.basicoop;
 import java.math.BigDecimal;
 
 public class AliasBugDemo {
+    private boolean isHappyHour;
+
     private void reserve(final Money cost) {
         System.out.println("Reserving an item costing " + cost);
     }
