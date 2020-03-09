@@ -4,6 +4,10 @@ import java.math.BigDecimal;
 
 public class Main {
     public static void main(String[] args) {
+        useAccountClass();
+    }
+
+    private static void useAccountClass() {
         final Account account1 = new Account();
         System.out.println("Account just created: " + account1.getBalance());
 
