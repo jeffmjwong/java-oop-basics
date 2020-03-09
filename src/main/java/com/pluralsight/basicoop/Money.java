@@ -16,6 +16,14 @@ public class Money implements Comparable<Money> {
         return new Money(amount.multiply(new BigDecimal(factor)), currency);
     }
 
+    public Money add(Money otherMoney) {
+        if (currency.compareTo(otherMoney.currency) != 0) {
+            throw new IllegalArgumentException();
+        }
+
+        return new Money(amount.add(otherMoney.amount), currency);
+    }
+
     @Override
     public String toString() {
         return amount + " " + currency;
