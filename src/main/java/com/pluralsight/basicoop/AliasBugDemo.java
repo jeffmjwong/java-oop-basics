@@ -43,5 +43,9 @@ public class AliasBugDemo {
 
         isHappyHour = true;
         buy(usd30, usd10);
+        System.out.println();
+
+        final Money usd50 = usd30.add(usd20);
+        System.out.println(usd50);
     }
 }
