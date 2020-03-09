@@ -12,8 +12,8 @@ public class Money implements Comparable<Money> {
         this.currency = currency;
     }
 
-    public void scale(double factor) {
-        amount = amount.multiply(new BigDecimal(factor)).setScale(2, RoundingMode.HALF_UP);
+    public Money scale(double factor) {
+        return new Money(amount.multiply(new BigDecimal(factor)), currency);
     }
 
     @Override

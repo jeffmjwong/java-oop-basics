@@ -5,19 +5,20 @@ import java.math.BigDecimal;
 public class AliasBugDemo {
     private boolean isHappyHour;
 
-    private void reserve(final Money cost) {
-        if (isHappyHour) {
-            cost.scale(0.5);
-        }
-
-        System.out.println("Reserving an item costing " + cost);
+    private Money reserve(final Money cost) {
+        final Money finalCost = isHappyHour ? cost.scale(0.5) : cost;
+        System.out.println("Reserving an item costing " + finalCost);
+        return finalCost;
     }
 
     private void buy(final Money wallet,final Money cost) {
-        reserve(cost);
         final boolean hasEnoughMoney = wallet.compareTo(cost) >= 0;
+        final Money finalCost = reserve(cost);
+        final boolean hasEnoughMoneyFinal = wallet.compareTo(finalCost) >= 0;
 
-        if (hasEnoughMoney) {
+        if (!hasEnoughMoney && hasEnoughMoneyFinal) {
+            System.out.println("Only this time, you will pay " + finalCost + " with your " + wallet);
+        } else if (hasEnoughMoney) {
             System.out.println("You will pay " + cost + " with your " + wallet);
         } else {
             System.out.println("You cannot pay " + cost + " with your " + wallet);
@@ -32,7 +33,9 @@ public class AliasBugDemo {
 
         buy(usd30, usd20);
         System.out.println();
+        buy(usd20, usd30);
+        System.out.println();
         isHappyHour = true;
-        buy(usd10, usd20);
+        buy(usd20, usd30);
     }
 }
