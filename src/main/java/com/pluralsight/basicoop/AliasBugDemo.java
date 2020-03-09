@@ -3,11 +3,11 @@ package com.pluralsight.basicoop;
 import java.math.BigDecimal;
 
 public class AliasBugDemo {
-    private void reserve(Money cost) {
+    private void reserve(final Money cost) {
         System.out.println("Reserving an item costing " + cost);
     }
 
-    private void buy(Money wallet, Money cost) {
+    private void buy(final Money wallet,final Money cost) {
         final boolean hasEnoughMoney = wallet.compareTo(cost) >= 0;
         reserve(cost);
 
@@ -19,7 +19,13 @@ public class AliasBugDemo {
     }
 
     public void run() {
-        final Money m1 = new Money(new BigDecimal("20"), new Currency("d"));
-        reserve(m1);
+        final Currency usd = new Currency("USD");
+        final Money usd30 = new Money(new BigDecimal("30"), usd);
+        final Money usd20 = new Money(new BigDecimal("20"), usd);
+        final Money usd10 = new Money(new BigDecimal("10"), usd);
+
+        buy(usd30, usd20);
+        System.out.println();
+        buy(usd10, usd20);
     }
 }
