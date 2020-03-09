@@ -8,7 +8,14 @@ public class AliasBugDemo {
     }
 
     private void buy(Money wallet, Money cost) {
+        final boolean hasEnoughMoney = wallet.compareTo(cost) >= 0;
+        reserve(cost);
 
+        if (hasEnoughMoney) {
+            System.out.println("You will pay " + cost + " with your " + wallet);
+        } else {
+            System.out.println("You cannot pay " + cost + " with your " + wallet);
+        }
     }
 
     public void run() {
