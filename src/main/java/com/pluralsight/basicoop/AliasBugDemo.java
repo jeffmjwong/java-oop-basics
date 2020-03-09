@@ -6,12 +6,16 @@ public class AliasBugDemo {
     private boolean isHappyHour;
 
     private void reserve(final Money cost) {
+        if (isHappyHour) {
+            cost.scale(0.5);
+        }
+
         System.out.println("Reserving an item costing " + cost);
     }
 
     private void buy(final Money wallet,final Money cost) {
-        final boolean hasEnoughMoney = wallet.compareTo(cost) >= 0;
         reserve(cost);
+        final boolean hasEnoughMoney = wallet.compareTo(cost) >= 0;
 
         if (hasEnoughMoney) {
             System.out.println("You will pay " + cost + " with your " + wallet);
@@ -28,6 +32,7 @@ public class AliasBugDemo {
 
         buy(usd30, usd20);
         System.out.println();
+        isHappyHour = true;
         buy(usd10, usd20);
     }
 }
