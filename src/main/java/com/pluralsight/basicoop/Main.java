@@ -5,12 +5,14 @@ import java.math.BigDecimal;
 public class Main {
     public static void main(String[] args) {
 //        useAccountClass();
-        useAliasBugDemo();
+//        useAliasBugDemo();
+        final WarrantyDemo demo = new WarrantyDemo();
+        demo.run();
     }
 
     private static void useAliasBugDemo() {
-        final AliasBugDemo demo1 = new AliasBugDemo();
-        demo1.run();
+        final AliasBugDemo demo = new AliasBugDemo();
+        demo.run();
     }
 
     private static void useAccountClass() {
