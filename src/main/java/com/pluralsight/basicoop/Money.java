@@ -31,7 +31,7 @@ public class Money implements Comparable<Money> {
 
     @Override
     public boolean equals(Object obj) {
-        return obj instanceof Money && equals((Money) obj);
+        return obj != null && getClass() == obj.getClass() && equals((Money) obj);
     }
 
     private boolean equals(Money otherMoney) {
