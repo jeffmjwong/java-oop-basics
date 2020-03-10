@@ -40,11 +40,6 @@ public class AliasBugDemo {
         map2.put(new Money(new BigDecimal("50"), new Currency("USD")), "Cost of life");
         Money money = new Money(new BigDecimal("50"), new Currency("USD"));
         System.out.println(money + " -> " + map2.getOrDefault(money, "nothing, really..."));
-
-//        final Money m1 = new Money(new BigDecimal("50"), new Currency("USD"));
-//        final Money m2 = new Money(new BigDecimal("50"), new Currency("USD"));
-//        System.out.println(m1.hashCode());
-//        System.out.println(m2.hashCode());
     }
 
     private void useValueObjectEquality() {

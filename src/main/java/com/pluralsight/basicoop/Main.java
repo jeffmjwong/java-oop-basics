@@ -1,27 +1,14 @@
 package com.pluralsight.basicoop;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 //        useAccountClass();
+        useAliasBugDemo();
+    }
 
-//        final Currency c1 = new Currency("c");
-//        final Currency c2 = new Currency("b");
-//        final Money m1 = new Money(new BigDecimal("50"), c1);
-//        final Money m2 = new Money(new BigDecimal("25"), c1);
-//        final Money m3 = new Money(new BigDecimal("50"), c2);
-//        final Money m4 = new Money(new BigDecimal("25"), c2);
-//
-//        List<Money> list1 = new ArrayList<>(Arrays.asList(m1, m2, m3, m4));
-//        System.out.println(list1);
-//        Collections.sort(list1);
-//        System.out.println(list1);
-
+    private static void useAliasBugDemo() {
         final AliasBugDemo demo1 = new AliasBugDemo();
         demo1.run();
     }
