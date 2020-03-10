@@ -31,15 +31,10 @@ public class Money implements Comparable<Money> {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
+        return obj instanceof Money && equals((Money) obj);
+    }
 
-        if (!(obj instanceof Money)) {
-            return false;
-        }
-
-        final Money otherMoney = (Money) obj;
+    public boolean equals(Money otherMoney) {
         return amount.equals(otherMoney.amount) && currency.equals(otherMoney.currency);
     }
 
