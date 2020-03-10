@@ -34,7 +34,7 @@ public class Money implements Comparable<Money> {
         return obj instanceof Money && equals((Money) obj);
     }
 
-    public boolean equals(Money otherMoney) {
+    private boolean equals(Money otherMoney) {
         return amount.equals(otherMoney.amount) && currency.equals(otherMoney.currency);
     }
 

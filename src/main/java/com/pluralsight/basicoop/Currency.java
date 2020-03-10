@@ -23,7 +23,7 @@ public class Currency implements Comparable<Currency> {
         return obj instanceof Currency && equals((Currency) obj);
     }
 
-    public boolean equals(Currency otherCurrency) {
+    private boolean equals(Currency otherCurrency) {
         return symbol.equals(otherCurrency.symbol);
     }
 

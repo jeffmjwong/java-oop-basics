@@ -49,5 +49,6 @@ public class AliasBugDemo {
         final Currency usdagain = new Currency("USD");
         final Money usd30again = new Money(new BigDecimal("30"), usdagain);
         System.out.println(usd30.equals(usd30again));
+        System.out.println();
     }
 }
