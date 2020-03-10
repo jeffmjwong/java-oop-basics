@@ -30,6 +30,11 @@ public class Money implements Comparable<Money> {
     }
 
     @Override
+    public int hashCode() {
+        return amount.hashCode() * 17 + currency.hashCode();
+    }
+
+    @Override
     public boolean equals(Object obj) {
         return obj != null && getClass() == obj.getClass() && equals((Money) obj);
     }
