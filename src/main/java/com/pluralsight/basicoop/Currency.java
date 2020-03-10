@@ -20,7 +20,7 @@ public final class Currency implements Comparable<Currency> {
 
     @Override
     public boolean equals(Object obj) {
-        return obj instanceof Currency && equals((Currency) obj);
+        return obj != null && getClass() == obj.getClass() && equals((Currency) obj);
     }
 
     private boolean equals(Currency otherCurrency) {
