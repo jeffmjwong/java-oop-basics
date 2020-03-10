@@ -31,10 +31,8 @@ public class AliasBugDemo {
         final Currency eur = new Currency("EUR");
         final Money euro20 = new Money(new BigDecimal("20"), eur);
         final Euro euro20de = new Euro(new BigDecimal("20"), eur, "de");
-        System.out.println(euro20 instanceof Money);
-        System.out.println(euro20de instanceof Money);
-        System.out.println(euro20 instanceof Euro);
-        System.out.println(euro20de instanceof Euro);
+        System.out.println(euro20.equals(euro20de));
+        System.out.println(euro20de.equals(euro20));
     }
 
     private void useAliasBug() {
