@@ -1,6 +1,8 @@
 package com.pluralsight.basicoop;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AliasBugDemo {
     private boolean isHappyHour;
@@ -27,7 +29,20 @@ public class AliasBugDemo {
 
     public void run() {
 //        useAliasBug();
+//        useValueObjectEquality();
 
+        Map<Integer, String> map1 = new HashMap<>();
+        map1.put(50, "Meaning of life");
+        Integer key = 50;
+        System.out.println(key + " -> " + map1.getOrDefault(key, "nothing, really..."));
+
+        Map<Money, String> map2 = new HashMap<>();
+        map2.put(new Money(new BigDecimal("50"), new Currency("USD")), "Cost of life");
+        Money money = new Money(new BigDecimal("50"), new Currency("USD"));
+        System.out.println(money + " -> " + map2.getOrDefault(money, "nothing, really..."));
+    }
+
+    private void useValueObjectEquality() {
         final Currency eur = new Currency("EUR");
         final Money euro20 = new Money(new BigDecimal("20"), eur);
         final Euro euro20de = new Euro(new BigDecimal("20"), eur, "de");
