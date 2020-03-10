@@ -19,6 +19,20 @@ public class Currency implements Comparable<Currency> {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof Currency)) {
+            return false;
+        }
+
+        final Currency otherCurrency = (Currency) obj;
+        return symbol.equals(otherCurrency.symbol);
+    }
+
+    @Override
     public int compareTo(Currency otherCurrency) {
         return this.symbol.compareTo(otherCurrency.symbol);
     }
