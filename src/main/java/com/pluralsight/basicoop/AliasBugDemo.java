@@ -31,21 +31,20 @@ public class AliasBugDemo {
 //        useAliasBug();
 //        useValueObjectEquality();
 
-//        Map<Integer, String> map1 = new HashMap<>();
-//        map1.put(50, "Meaning of life");
-//        Integer key = 50;
-//        System.out.println(key + " -> " + map1.getOrDefault(key, "nothing, really..."));
-//
-//        Map<Money, String> map2 = new HashMap<>();
-//        map2.put(new Money(new BigDecimal("50"), new Currency("USD")), "Cost of life");
-//        Money money = new Money(new BigDecimal("50"), new Currency("USD"));
-//        System.out.println(money + " -> " + map2.getOrDefault(money, "nothing, really..."));
+        Map<Integer, String> map1 = new HashMap<>();
+        map1.put(50, "Meaning of life");
+        Integer key = 50;
+        System.out.println(key + " -> " + map1.getOrDefault(key, "nothing, really..."));
 
-        final Currency c1 = new Currency("USD");
-        final Money m1 = new Money(new BigDecimal("50"), c1);
-        final Money m2 = new Money(new BigDecimal("50"), c1);
-        System.out.println(m1.hashCode());
-        System.out.println(m2.hashCode());
+        Map<Money, String> map2 = new HashMap<>();
+        map2.put(new Money(new BigDecimal("50"), new Currency("USD")), "Cost of life");
+        Money money = new Money(new BigDecimal("50"), new Currency("USD"));
+        System.out.println(money + " -> " + map2.getOrDefault(money, "nothing, really..."));
+
+//        final Money m1 = new Money(new BigDecimal("50"), new Currency("USD"));
+//        final Money m2 = new Money(new BigDecimal("50"), new Currency("USD"));
+//        System.out.println(m1.hashCode());
+//        System.out.println(m2.hashCode());
     }
 
     private void useValueObjectEquality() {

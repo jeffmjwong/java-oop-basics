@@ -19,6 +19,11 @@ public final class Currency implements Comparable<Currency> {
     }
 
     @Override
+    public int hashCode() {
+        return symbol.hashCode();
+    }
+
+    @Override
     public boolean equals(Object obj) {
         return obj != null && getClass() == obj.getClass() && equals((Currency) obj);
     }
