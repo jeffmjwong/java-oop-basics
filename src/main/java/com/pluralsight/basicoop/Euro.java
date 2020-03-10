@@ -11,6 +11,11 @@ public class Euro extends Money {
     }
 
     @Override
+    public int hashCode() {
+        return super.hashCode() * 31 + iso2Country.hashCode();
+    }
+
+    @Override
     public boolean equals(Object obj) {
         return obj instanceof Euro && equals((Euro) obj);
     }
