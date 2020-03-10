@@ -2,7 +2,7 @@ package com.pluralsight.basicoop;
 
 import java.math.BigDecimal;
 
-public class Currency implements Comparable<Currency> {
+public final class Currency implements Comparable<Currency> {
     private String symbol;
 
     public Currency(String symbol) {
