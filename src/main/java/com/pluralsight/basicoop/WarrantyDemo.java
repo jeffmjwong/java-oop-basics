@@ -1,6 +1,8 @@
 package com.pluralsight.basicoop;
 
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class WarrantyDemo {
     public void claimWarranty(Article article, boolean isInGoodCondition, boolean isNonOperational) {
@@ -18,6 +20,11 @@ public class WarrantyDemo {
     }
 
     public void run() {
-        final Article item1 = new Article();
+        final LocalDate sellingDate = LocalDate.now().minus(40, ChronoUnit.DAYS);
+        final Warranty moneyBack1 = new TimeLimitedWarranty(sellingDate, Duration.ofDays(30));
+        final Warranty warranty1 = new TimeLimitedWarranty(sellingDate, Duration.ofDays(365));
+
+        final Article item1 = new Article(moneyBack1, warranty1);
+        System.out.println(item1);
     }
 }
