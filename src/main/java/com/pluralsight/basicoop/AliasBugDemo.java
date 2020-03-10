@@ -45,7 +45,8 @@ public class AliasBugDemo {
         buy(usd30, usd10);
         System.out.println();
 
-        final Money usd50 = usd30.add(usd20);
-        System.out.println(usd50);
+        System.out.println(usd30.equals(usd20));
+        final Money usd30again = new Money(new BigDecimal("30"), usd);
+        System.out.println(usd30.equals(usd30again));
     }
 }

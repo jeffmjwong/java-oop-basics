@@ -30,6 +30,20 @@ public class Money implements Comparable<Money> {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof Money)) {
+            return false;
+        }
+
+        final Money otherMoney = (Money) obj;
+        return amount.equals(otherMoney.amount) && currency.equals(otherMoney.currency);
+    }
+
+    @Override
     public int compareTo(Money otherMoney) {
         return compareAmountTo(currency.compareTo(otherMoney.currency), otherMoney);
     }
