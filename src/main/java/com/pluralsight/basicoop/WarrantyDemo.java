@@ -18,6 +18,6 @@ public class WarrantyDemo {
     }
 
     public void run() {
-        System.out.println("Warranty demo!");
+        final Article item1 = new Article();
     }
 }
