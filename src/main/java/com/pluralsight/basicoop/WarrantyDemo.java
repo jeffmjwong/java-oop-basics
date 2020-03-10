@@ -5,14 +5,14 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class WarrantyDemo {
-    public void claimWarranty(Article article, boolean isInGoodCondition, boolean isNonOperational) {
+    public void claimWarranty(Article article) {
         LocalDate today = LocalDate.now();
 
-        if (isInGoodCondition && isNonOperational && article.getMoneyBackGuarantee() != null && article.getMoneyBackGuarantee().isValidOn(today)) {
+        if (article.getMoneyBackGuarantee().isValidOn(today)) {
             System.out.println("Offer money back!");
         }
 
-        if (isNonOperational && article.getExpressWarranty() != null && article.getExpressWarranty().isValidOn(today)) {
+        if (article.getExpressWarranty().isValidOn(today)) {
             System.out.println("Offer repair!");
         }
 
@@ -25,6 +25,6 @@ public class WarrantyDemo {
         final Warranty warranty1 = new TimeLimitedWarranty(sellingDate, Duration.ofDays(365));
 
         final Article item1 = new Article(moneyBack1, warranty1);
-        System.out.println(item1);
+        claimWarranty(item1);
     }
 }
