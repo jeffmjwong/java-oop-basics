@@ -3,7 +3,6 @@ package com.pluralsight.basicoop;
 import java.time.LocalDate;
 
 public interface Warranty {
-    boolean isValidOn(LocalDate date);
     Warranty on(LocalDate date);
     default void claim(Runnable action) {
         action.run();
