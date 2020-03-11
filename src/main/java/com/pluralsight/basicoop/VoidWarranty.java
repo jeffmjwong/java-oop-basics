@@ -12,4 +12,9 @@ public class VoidWarranty implements Warranty {
     public void claim(Runnable action) {
 
     }
+
+    @Override
+    public Warranty on(LocalDate date) {
+        return this;
+    }
 }
