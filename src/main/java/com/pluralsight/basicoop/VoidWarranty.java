@@ -7,4 +7,9 @@ public class VoidWarranty implements Warranty {
     public boolean isValidOn(LocalDate date) {
         return false;
     }
+
+    @Override
+    public void claim(Runnable action) {
+
+    }
 }

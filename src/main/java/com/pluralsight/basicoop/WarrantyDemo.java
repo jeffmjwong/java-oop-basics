@@ -25,7 +25,7 @@ public class WarrantyDemo {
         final Article item1 = new Article(moneyBack1, warranty1);
         claimWarranty(item1);
 
-        final Article item2 = new Article(Warranty.lifetime(sellingDate), Warranty.VOID);
+        final Article item2 = new Article(Warranty.VOID, Warranty.VOID);
         claimWarranty(item2);
     }
 }
