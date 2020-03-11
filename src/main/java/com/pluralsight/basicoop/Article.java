@@ -3,6 +3,7 @@ package com.pluralsight.basicoop;
 public class Article {
     private Warranty moneyBackGuarantee;
     private Warranty expressWarranty;
+    private Warranty effectiveExpressWarranty;
 
     public Article(Warranty moneyBackGuarantee, Warranty expressWarranty) {
         if (moneyBackGuarantee == null || expressWarranty == null) {
