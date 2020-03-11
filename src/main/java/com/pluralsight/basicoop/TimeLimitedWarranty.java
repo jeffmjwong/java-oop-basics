@@ -13,11 +13,6 @@ public class TimeLimitedWarranty implements Warranty {
     }
 
     @Override
-    public boolean isValidOn(LocalDate date) {
-        return dateIssued.compareTo(date) <= 0 && getExpiredDate().compareTo(date) > 0;
-    }
-
-    @Override
     public Warranty on(LocalDate date) {
         return date.compareTo(dateIssued) < 0 ? Warranty.VOID
                 : date.compareTo(getExpiredDate()) > 0 ? Warranty.VOID
