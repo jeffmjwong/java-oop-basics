@@ -27,6 +27,18 @@ public class OptionalDemo {
         }
     }
 
+    private static class None extends MaybeString {
+        @Override
+        public MaybeString toUpperCase() {
+            return this;
+        }
+
+        @Override
+        public String orElse(String substitute) {
+            return substitute;
+        }
+    }
+
     private void display(MaybeString value) {
         MaybeString uppercase = value.toUpperCase();
         String printout = uppercase.orElse("Nothing to show...");
@@ -34,8 +46,8 @@ public class OptionalDemo {
     }
 
     public void run() {
-        display(null);
+        display(new None());
         display(new Some("something"));
-        display("Making Your Java Code More Object-Oriented");
+        display(new Some("Making Your Java Code More Object-Oriented"));
     }
 }
