@@ -4,14 +4,7 @@ import java.time.LocalDate;
 
 public class VoidWarranty implements Warranty {
     @Override
-    public boolean isValidOn(LocalDate date) {
-        return false;
-    }
-
-    @Override
-    public void claim(Runnable action) {
-
-    }
+    public void claim(Runnable action) {}
 
     @Override
     public Warranty on(LocalDate date) {
