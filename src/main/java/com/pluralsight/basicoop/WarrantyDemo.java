@@ -27,6 +27,13 @@ public class WarrantyDemo {
         System.out.println("Offer parts replacement!");
     }
 
+    private void printClaim(Article item) {
+        System.out.println("Start");
+        claimWarranty(item);
+        System.out.println("End");
+        System.out.println();
+    }
+
     public void run() {
         final LocalDate sellingDate = LocalDate.now().minus(40, ChronoUnit.DAYS);
         final Warranty moneyBack = new TimeLimitedWarranty(sellingDate, Duration.ofDays(60));
@@ -37,36 +44,14 @@ public class WarrantyDemo {
 
         final Article item = new Article(moneyBack, warranty).install(sensor, sensorWarranty);
 
-        System.out.println("Start");
-        claimWarranty(item);
-        System.out.println("End");
-        System.out.println();
-
-        System.out.println("Start");
-        claimWarranty(item.withVisibleDamage());
-        System.out.println("End");
-        System.out.println();
-
-        System.out.println("Start");
-        claimWarranty(item.withVisibleDamage().nonOperational());
-        System.out.println("End");
-        System.out.println();
-
-        System.out.println("Start");
-        claimWarranty(item.nonOperational());
-        System.out.println("End");
-        System.out.println();
+//        printClaim(item);
+//        printClaim(item.withVisibleDamage());
+//        printClaim(item.withVisibleDamage().nonOperational());
+//        printClaim(item.nonOperational());
 
         final LocalDate sensorExamined = LocalDate.now().minus(2, ChronoUnit.DAYS);
 
-        System.out.println("Start");
-        claimWarranty(item.sensorNotOperational(sensorExamined));
-        System.out.println("End");
-        System.out.println();
-
-        System.out.println("Start");
-        claimWarranty(item.nonOperational().sensorNotOperational(sensorExamined));
-        System.out.println("End");
-        System.out.println();
+        printClaim(item.sensorNotOperational(sensorExamined));
+        printClaim(item.nonOperational().sensorNotOperational(sensorExamined));
     }
 }

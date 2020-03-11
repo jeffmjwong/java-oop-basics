@@ -48,6 +48,6 @@ public class Article {
     }
 
     public Article sensorNotOperational(LocalDate detectedOn) {
-        return install(sensor.defective(detectedOn), extendedWarranty);
+        return sensor == null ? this : install(sensor.defective(detectedOn), extendedWarranty);
     }
 }
