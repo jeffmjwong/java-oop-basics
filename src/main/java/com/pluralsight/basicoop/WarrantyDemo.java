@@ -8,13 +8,18 @@ public class WarrantyDemo {
     public void claimWarranty(Article article) {
         LocalDate today = LocalDate.now();
 
-        article.getMoneyBackGuarantee().on(today).claim(() -> System.out.println("Offer money back!"));
-
-        if (article.getExpressWarranty().isValidOn(today)) {
-            System.out.println("Offer repair!");
-        }
+        article.getMoneyBackGuarantee().on(today).claim(this::offerMoneyBack);
+        article.getExpressWarranty().on(today).claim(this::offerRepair);
 
         System.out.println("------------------------");
+    }
+
+    private void offerMoneyBack() {
+        System.out.println("Offer money back!");
+    }
+
+    private void offerRepair() {
+        System.out.println("Offer repair!");
     }
 
     public void run() {
@@ -25,7 +30,7 @@ public class WarrantyDemo {
         final Article item1 = new Article(moneyBack1, warranty1);
         claimWarranty(item1);
 
-        final Article item2 = new Article(Warranty.VOID, Warranty.VOID);
+        final Article item2 = new Article(Warranty.lifetime(sellingDate), Warranty.VOID);
         claimWarranty(item2);
     }
 }
