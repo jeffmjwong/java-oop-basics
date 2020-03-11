@@ -1,11 +1,11 @@
 package com.pluralsight.basicoop;
 
-import java.util.Optional;
 import java.util.function.Function;
 
 public class OptionalDemo {
     private static abstract class Maybe<T> {
-        public abstract Maybe<T> map(Function<T, T> transform);
+        public abstract <TResult> Maybe<TResult> map(Function<T, TResult> transform);
+        public abstract <TResult> Maybe<TResult> flatMap(Function<T, Maybe<TResult>> transform);
         public abstract T orElse(T substitute);
         public abstract boolean isPresent();
         public abstract T get();
@@ -19,8 +19,13 @@ public class OptionalDemo {
         }
 
         @Override
-        public Maybe<T> map(Function<T, T> transform) {
+        public <TResult> Maybe<TResult> map(Function<T, TResult> transform) {
             return new Some<>(transform.apply(content));
+        }
+
+        @Override
+        public <TResult> Maybe<TResult> flatMap(Function<T, Maybe<TResult>> transform) {
+            return transform.apply(content);
         }
 
         @Override
