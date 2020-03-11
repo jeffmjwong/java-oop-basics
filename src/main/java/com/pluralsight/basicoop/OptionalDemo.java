@@ -64,11 +64,7 @@ public class OptionalDemo {
     }
 
     private void display(MaybeString value) {
-        MaybeString uppercase = value.map(String::toUpperCase);
-        System.out.println(uppercase.isPresent());
-        System.out.println(uppercase.get());
-        String printout = uppercase.orElse("Nothing to show...");
-        System.out.println(printout);
+        System.out.println(value.map(String::toUpperCase).orElse("Nothing to show..."));
     }
 
     public void run() {
