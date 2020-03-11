@@ -48,8 +48,13 @@ public class OptionalDemo {
         public None() {}
 
         @Override
-        public Maybe<T> map(Function<T, T> transform) {
-            return this;
+        public <TResult> Maybe<TResult> map(Function<T, TResult> transform) {
+            return new None<>();
+        }
+
+        @Override
+        public <TResult> Maybe<TResult> flatMap(Function<T, Maybe<TResult>> transform) {
+            return new None<>();
         }
 
         @Override
