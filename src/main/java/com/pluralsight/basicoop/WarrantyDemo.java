@@ -24,7 +24,10 @@ public class WarrantyDemo {
         final Warranty moneyBack1 = new TimeLimitedWarranty(sellingDate, Duration.ofDays(30));
         final Warranty warranty1 = new TimeLimitedWarranty(sellingDate, Duration.ofDays(365));
 
-        final Article item1 = new Article(Warranty.VOID, Warranty.VOID);
+        final Article item1 = new Article(moneyBack1, warranty1);
         claimWarranty(item1);
+
+        final Article item2 = new Article(Warranty.VOID, Warranty.VOID);
+        claimWarranty(item2);
     }
 }
