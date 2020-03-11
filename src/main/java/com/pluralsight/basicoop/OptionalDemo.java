@@ -1,10 +1,11 @@
 package com.pluralsight.basicoop;
 
 import java.util.Optional;
+import java.util.function.Function;
 
 public class OptionalDemo {
     private static abstract class MaybeString {
-        public abstract MaybeString toUpperCase();
+        public abstract MaybeString map(Function<String, String> transform);
         public abstract String orElse(String substitute);
     }
 
@@ -16,8 +17,8 @@ public class OptionalDemo {
         }
 
         @Override
-        public MaybeString toUpperCase() {
-            return new Some(content.toUpperCase());
+        public MaybeString map(Function<String, String> transform) {
+            return new Some(transform.apply(content));
         }
 
         @Override
@@ -30,7 +31,7 @@ public class OptionalDemo {
         public None() {}
 
         @Override
-        public MaybeString toUpperCase() {
+        public MaybeString map(Function<String, String> transform) {
             return this;
         }
 
@@ -41,7 +42,7 @@ public class OptionalDemo {
     }
 
     private void display(MaybeString value) {
-        MaybeString uppercase = value.toUpperCase();
+        MaybeString uppercase = value.map(String::toUpperCase);
         String printout = uppercase.orElse("Nothing to show...");
         System.out.println(printout);
     }
