@@ -23,10 +23,14 @@ public class Article {
         return moneyBackGuarantee;
     }
     public Warranty getExpressWarranty() {
-        return expressWarranty;
+        return effectiveExpressWarranty;
     }
 
     public Article withVisibleDamage() {
-        return new Article(Warranty.VOID, expressWarranty);
+        return new Article(Warranty.VOID, expressWarranty, effectiveExpressWarranty);
+    }
+
+    public Article nonOperational() {
+        return new Article(moneyBackGuarantee, expressWarranty, expressWarranty);
     }
 }
