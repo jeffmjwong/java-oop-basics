@@ -8,6 +8,7 @@ public class OptionalDemo {
         public abstract MaybeString map(Function<String, String> transform);
         public abstract String orElse(String substitute);
         public abstract boolean isPresent();
+        public abstract String get();
     }
 
     private static class Some extends MaybeString {
@@ -31,6 +32,11 @@ public class OptionalDemo {
         public boolean isPresent() {
             return true;
         }
+
+        @Override
+        public String get() {
+            return content;
+        }
     }
 
     private static class None extends MaybeString {
@@ -50,11 +56,17 @@ public class OptionalDemo {
         public boolean isPresent() {
             return false;
         }
+
+        @Override
+        public String get() {
+            throw new IllegalStateException();
+        }
     }
 
     private void display(MaybeString value) {
         MaybeString uppercase = value.map(String::toUpperCase);
         System.out.println(uppercase.isPresent());
+        System.out.println(uppercase.get());
         String printout = uppercase.orElse("Nothing to show...");
         System.out.println(printout);
     }
