@@ -17,8 +17,7 @@ public class OptionalDemo {
 
         @Override
         public MaybeString toUpperCase() {
-            content = content.toUpperCase();
-            return this;
+            return new Some(content.toUpperCase());
         }
 
         @Override
