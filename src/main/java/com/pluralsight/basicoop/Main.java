@@ -6,6 +6,16 @@ public class Main {
     public static void main(String[] args) {
 //        useAccountClass();
 //        useAliasBugDemo();
+//        useWarrantyDemo();
+        useOptionalDemo();
+    }
+
+    private static void useOptionalDemo() {
+        final OptionalDemo demo = new OptionalDemo();
+        demo.run();
+    }
+
+    private static void useWarrantyDemo() {
         final WarrantyDemo demo = new WarrantyDemo();
         demo.run();
     }
