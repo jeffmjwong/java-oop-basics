@@ -27,14 +27,14 @@ public class WarrantyDemo {
         final Warranty moneyBack1 = new TimeLimitedWarranty(sellingDate, Duration.ofDays(60));
         final Warranty warranty1 = new TimeLimitedWarranty(sellingDate, Duration.ofDays(365));
 
-//        final Article item1 = new Article(moneyBack1, warranty1);
-//        claimWarranty(item1);
-//        System.out.println();
-//        claimWarranty(item1.withVisibleDamage());
-//        System.out.println();
-//        claimWarranty(item1.nonOperational().withVisibleDamage());
-//        System.out.println();
-//        claimWarranty(item1.nonOperational());
+        final Article item1 = new Article(moneyBack1, warranty1);
+        claimWarranty(item1);
+        System.out.println();
+        claimWarranty(item1.withVisibleDamage());
+        System.out.println();
+        claimWarranty(item1.nonOperational().withVisibleDamage());
+        System.out.println();
+        claimWarranty(item1.nonOperational());
 
         Article item2 = new Article(Warranty.VOID, Warranty.lifetime(sellingDate));
         claimWarranty(item2);
