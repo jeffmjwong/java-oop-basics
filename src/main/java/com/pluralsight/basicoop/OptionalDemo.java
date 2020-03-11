@@ -9,25 +9,27 @@ public class OptionalDemo {
     }
 
     private static class Some extends MaybeString {
-        private String value;
+        private String content;
 
-        public Some(String value) {
-            this.value = value;
+        public Some(String content) {
+            this.content = content;
         }
 
         @Override
         public MaybeString toUpperCase() {
-            value = value.toUpperCase();
+            content = content.toUpperCase();
             return this;
         }
 
         @Override
         public String orElse(String substitute) {
-            return value;
+            return content;
         }
     }
 
     private static class None extends MaybeString {
+        public None() {}
+
         @Override
         public MaybeString toUpperCase() {
             return this;
