@@ -1,8 +1,16 @@
 package com.pluralsight.basicoop;
 
+import java.util.Optional;
+
 public class OptionalDemo {
-    private void display(String value) {
-        String printout = value == null ? "Nothing to show..." : value.toUpperCase();
+    private static abstract class MaybeString {
+        public abstract MaybeString toUpperCase();
+        public abstract String orElse();
+    }
+
+    private void display(MaybeString value) {
+        MaybeString uppercase = value.toUpperCase();
+        String printout = uppercase.orElse("Nothing to show...");
         System.out.println(printout);
     }
 
