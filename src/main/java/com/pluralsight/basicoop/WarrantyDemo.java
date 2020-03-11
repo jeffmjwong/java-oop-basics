@@ -10,6 +10,7 @@ public class WarrantyDemo {
 
         article.getMoneyBackGuarantee().on(today).claim(this::offerMoneyBack);
         article.getExpressWarranty().on(today).claim(this::offerRepair);
+        article.getExtendedWarranty().on(today).claim(this::offerPartsReplacement);
 
         System.out.println("------------------------");
     }
@@ -22,24 +23,50 @@ public class WarrantyDemo {
         System.out.println("Offer repair!");
     }
 
+    private void offerPartsReplacement() {
+        System.out.println("Offer parts replacement!");
+    }
+
     public void run() {
         final LocalDate sellingDate = LocalDate.now().minus(40, ChronoUnit.DAYS);
-        final Warranty moneyBack1 = new TimeLimitedWarranty(sellingDate, Duration.ofDays(60));
-        final Warranty warranty1 = new TimeLimitedWarranty(sellingDate, Duration.ofDays(365));
+        final Warranty moneyBack = new TimeLimitedWarranty(sellingDate, Duration.ofDays(60));
+        final Warranty warranty = new TimeLimitedWarranty(sellingDate, Duration.ofDays(365));
 
-        final Article item1 = new Article(moneyBack1, warranty1);
-        claimWarranty(item1);
-        System.out.println();
-        claimWarranty(item1.withVisibleDamage());
-        System.out.println();
-        claimWarranty(item1.nonOperational().withVisibleDamage());
-        System.out.println();
-        claimWarranty(item1.nonOperational());
+        final Part sensor = new Part(sellingDate);
+        final Warranty sensorWarranty = new TimeLimitedWarranty(sellingDate, Duration.ofDays(90));
 
-        Article item2 = new Article(Warranty.VOID, Warranty.lifetime(sellingDate));
-        claimWarranty(item2);
+        final Article item = new Article(moneyBack, warranty).install(sensor, sensorWarranty);
+
+        System.out.println("Start");
+        claimWarranty(item);
+        System.out.println("End");
         System.out.println();
-        claimWarranty(item2.withVisibleDamage().nonOperational());
+
+        System.out.println("Start");
+        claimWarranty(item.withVisibleDamage());
+        System.out.println("End");
+        System.out.println();
+
+        System.out.println("Start");
+        claimWarranty(item.withVisibleDamage().nonOperational());
+        System.out.println("End");
+        System.out.println();
+
+        System.out.println("Start");
+        claimWarranty(item.nonOperational());
+        System.out.println("End");
+        System.out.println();
+
+        final LocalDate sensorExamined = LocalDate.now().minus(2, ChronoUnit.DAYS);
+
+        System.out.println("Start");
+        claimWarranty(item.sensorNotOperational(sensorExamined));
+        System.out.println("End");
+        System.out.println();
+
+        System.out.println("Start");
+        claimWarranty(item.nonOperational().sensorNotOperational(sensorExamined));
+        System.out.println("End");
         System.out.println();
     }
 }

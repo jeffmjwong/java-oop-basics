@@ -18,4 +18,8 @@ public class Part {
     public Part defective(LocalDate detectedOn) {
         return new Part(installmentDate, detectedOn);
     }
+
+    public Warranty apply(Warranty partWarranty) {
+        return defectDetectedOn == null ? Warranty.VOID : Warranty.lifetime(defectDetectedOn);
+    }
 }

@@ -32,7 +32,7 @@ public class Article {
         return effectiveExpressWarranty;
     }
     public Warranty getExtendedWarranty() {
-        return extendedWarranty;
+        return sensor == null ? Warranty.VOID : sensor.apply(extendedWarranty);
     }
 
     public Article withVisibleDamage() {
