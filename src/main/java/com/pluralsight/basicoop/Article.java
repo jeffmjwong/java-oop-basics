@@ -19,4 +19,8 @@ public class Article {
     public Warranty getExpressWarranty() {
         return expressWarranty;
     }
+
+    public Article withVisibleDamage() {
+        return new Article(Warranty.VOID, expressWarranty);
+    }
 }
